@@ -1,20 +1,20 @@
 import sympy as sp #Libreria para el uso de algebra
 import random as rd #Libreria para la generación de numeros aleatorios
-class Secundaria(): #MODULO SECUNDARIA
+import NivelAcademico
+class Secundaria(NivelAcademico): #MODULO SECUNDARIA
     '''
     Class Secundaria: Clase exclusiva para alumnos del nivel secundaria, la cual contendra
     temas de algebra y geometria.
     '''
     cantidad_alumnos = []
     contador_alumnos = 0 #Variable de clase: Para contar la cantidad de alumnos que se vayan registrando
-    puntuacion = 0 #Dato estadistico: Puntuación que contendra cada alumno de 0 - 10
-    def __init__(self, nombre, grado, id, puntuacion):
+    def __init__(self, nombre, grado):
         id_alumno = Secundaria.contador_alumnos
         id_alumno += 1
         self._id = id_alumno
         self._nombre = nombre
         self._grado = grado
-        self._puntuacion = Secundaria.puntuacion
+        self._puntuacion = 0
 
 #Encapsulamiento de atributos protegidos
     @property
@@ -36,6 +36,27 @@ class Secundaria(): #MODULO SECUNDARIA
     def puntuacion(self):
         return self._puntuacion
 
+    @puntuacion.setter
+    def puntuacion(self, puntuacion):
+        self._puntuacion = puntuacion
+
+    def pensamiento_matematico(self):
+        print("--------Bienvenido a los problemas lógico-matematica---------")
+        respuesta = input('''Luis escondió un objeto en su sombrero mágico, le dijo a Manuel que si adivinaba el color y la forma
+        le regalaba un dulce. Para hacerlo más justo, Luis le dio las siguientes pistas:
+        ■ Si es azul, entonces es redondo.
+        ■ Si es cuadrado, entonces es rojo.
+        ■ Es azul o amarillo.
+        ■ Si es amarillo, entonces es cuadrado
+        ■ Es cuadrado o redondo.
+        ¿Cómo es el objeto?
+        ''')
+
+        if respuesta.lower() == "redondo azul":
+            print("Respuesta Correcta!!")
+            self.puntuacion += 1
+        else:
+            print("Respuesta incorrecta!!")
     #PROBLEMAS ALGEBRAICOS
     def ecuacion_primer_grado(self):
         pass
@@ -53,6 +74,8 @@ class Secundaria(): #MODULO SECUNDARIA
 #CLASE PARA TENER CONTROL DE DATOS.
 
 if __name__ == '__main__':
-    print("NIVEL SECUNDARIA: ALGEBRA Y GEOMETRIA")
+    alumno1 = Secundaria("Eduardo", 2)
 
+    alumno1.pensamiento_matematico()
+    print(alumno1.puntuacion)
 
