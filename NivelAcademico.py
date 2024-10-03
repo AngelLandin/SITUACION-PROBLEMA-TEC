@@ -7,10 +7,10 @@ class NivelAcademico():
 
     def registrar_respuesta(self, respuesta, correcta):
         if respuesta == correcta:
-            print("Excelente, respuesta CORRECTA!!!")
+            print("\u2705Excelente, respuesta CORRECTA!!!\u2705")
             self.puntuacion += 1
         else:
-            print(f"INCORRECTO!!!, la respuesta correcta es: {correcta}")
+            print(f"\U0001F625INCORRECTO!!!\U0001F625, la respuesta correcta es: {correcta}")
 
     def mostrar_puntuacion(self):
         print(f'Tu puntuacion actual es de: {self.puntuacion}')
@@ -46,3 +46,8 @@ class NivelAcademico():
     @ejercicios.setter
     def ejercicios(self, ejercicios):
         self._ejercicios = ejercicios
+
+if __name__ == '__main__':
+    print(f" \U0001F625 INCORRECTO!!! \U0001F625, ")
+
+    

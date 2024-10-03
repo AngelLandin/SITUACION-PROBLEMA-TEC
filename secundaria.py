@@ -1,6 +1,6 @@
 import sympy as sp #Libreria para el uso de algebra
 import random as rd #Libreria para la generación de numeros aleatorios
-import NivelAcademico
+from NivelAcademico import NivelAcademico
 class Secundaria(NivelAcademico): #MODULO SECUNDARIA
     '''
     Class Secundaria: Clase exclusiva para alumnos del nivel secundaria, la cual contendra
@@ -9,12 +9,10 @@ class Secundaria(NivelAcademico): #MODULO SECUNDARIA
     cantidad_alumnos = []
     contador_alumnos = 0 #Variable de clase: Para contar la cantidad de alumnos que se vayan registrando
     def __init__(self, nombre, grado):
-        id_alumno = Secundaria.contador_alumnos
-        id_alumno += 1
-        self._id = id_alumno
-        self._nombre = nombre
-        self._grado = grado
-        self._puntuacion = 0
+        super().__init__(nombre, grado) #Herencia de atributos de la clase padre.
+        Secundaria.contador_alumnos += 1
+        self._id = Secundaria.contador_alumnos
+        #self._puntuacion = 0
 
 #Encapsulamiento de atributos protegidos
     @property
@@ -38,10 +36,11 @@ class Secundaria(NivelAcademico): #MODULO SECUNDARIA
 
     @puntuacion.setter
     def puntuacion(self, puntuacion):
-        self._puntuacion = puntuacion
+        self._puntuacion = puntuacion        
 
-    def pensamiento_matematico(self):
-        print("--------Bienvenido a los problemas lógico-matematica---------")
+    #PROBLEMAS ALGEBRAICOS
+    def nivel1(self):
+        print("--------Bienvenido al juego Matemático--------- \n Historia: Te adentras en el bosque donde los números viven en armonía. Para avanzar, debes resolver acertijos simples que te ayudarán a encontrar el camino correcto.")
         respuesta = input('''Luis escondió un objeto en su sombrero mágico, le dijo a Manuel que si adivinaba el color y la forma
         le regalaba un dulce. Para hacerlo más justo, Luis le dio las siguientes pistas:
         ■ Si es azul, entonces es redondo.
@@ -50,32 +49,55 @@ class Secundaria(NivelAcademico): #MODULO SECUNDARIA
         ■ Si es amarillo, entonces es cuadrado
         ■ Es cuadrado o redondo.
         ¿Cómo es el objeto?
-        ''')
+        ''').lower()
+        correcta = "redondo y azul"
+        self.registrar_respuesta(respuesta, correcta)
+        print('''
+Avancemos... \u26D4 Ahora nos adentraremos al BOSQUE DE LOS NÚMEROS!!! \u26D4 
+              Mientras avanzas por el Bosque de los Números, encuentras un anciano sabio 
+              que te presenta tres acertijos matemáticos. 
+              Para continuar tu camino, debes resolverlos.
+''')
+        x = rd.randint(1,25)
+        x2 = rd.randint(1,10)
+        x3 = rd.randint(1,10)
+        x4 = rd.randint(1,10)
+        x5 = rd.randint(1,10)
+        x6 = rd.randint(1,10)
+        print(f"Calcula: {x}({x2}+{x3})-({x4}^2)+({x5}^4): ", end="")
+        respuesta = int(input(""))
+        correcta = x*(x2+x3) - (x4**2) + (x5**4)
 
-        if respuesta.lower() == "redondo azul":
-            print("Respuesta Correcta!!")
-            self.puntuacion += 1
-        else:
-            print("Respuesta incorrecta!!")
-    #PROBLEMAS ALGEBRAICOS
-    def ecuacion_primer_grado(self):
+        self.registrar_respuesta(respuesta, correcta)
+
+    def nivel2(self):
+        print('''
+Un tren sale de una ciudad a las 2:00 PM y viaja a 80 km/h. ¿A qué hora llegará a su destino si está a 240 km de distancia?
+
+
+''')
+
+    def nivel3(self):
+        pass
+    
+    def desafio(self):
         pass
 
-    def ecuacion_segundo_grado(self):
-        pass
-
-    def binomio_cuadratico(self):
-        pass
-
-    def distancia_puntos(self):
-        pass
 
 #PARTE TEORICA CON VERIFICACION DE STR.
 #CLASE PARA TENER CONTROL DE DATOS.
 
 if __name__ == '__main__':
-    alumno1 = Secundaria("Eduardo", 2)
+    print("""
+          Bienvenido al Desafío Matemático Nivel Secundaria. 
+          Te cuento un poco la historia: eres un aventurero que necesita llegar a un lugar secreto, 
+          un antiguo templo escondido en lo profundo de un bosque misterioso. Para descubrir su gran SECRETO, 
+          debes superar una serie de desafíos matemáticos que te pondrán a prueba. 
+          Cada nivel te acercará más a tu destino, y solo los más astutos lograrán desvelar el misterio.
+""")
 
-    alumno1.pensamiento_matematico()
-    print(alumno1.puntuacion)
+    alumno1 = Secundaria("Eduardo", "secundaria")
+
+    alumno1.nivel1()
+    #print(alumno1.puntuacion)
 
