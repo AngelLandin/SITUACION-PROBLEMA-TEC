@@ -40,7 +40,7 @@ class Secundaria(NivelAcademico): #MODULO SECUNDARIA
 
     #PROBLEMAS ALGEBRAICOS
     def nivel1(self):
-        print("--------Bienvenido al juego Matemático--------- \n Historia: Te adentras en el bosque donde los números viven en armonía. Para avanzar, debes resolver acertijos simples que te ayudarán a encontrar el camino correcto.")
+        print(f"--------Bienvenido {self.nombre} al juego Matemático--------- \n Historia: Te adentras en el bosque donde los números viven en armonía. Para avanzar, debes resolver acertijos simples que te ayudarán a encontrar el camino correcto.")
         respuesta = input('''Luis escondió un objeto en su sombrero mágico, le dijo a Manuel que si adivinaba el color y la forma
         le regalaba un dulce. Para hacerlo más justo, Luis le dio las siguientes pistas:
         ■ Si es azul, entonces es redondo.
@@ -69,13 +69,56 @@ Avancemos... \u26D4 Ahora nos adentraremos al BOSQUE DE LOS NÚMEROS!!! \u26D4
         correcta = x*(x2+x3) - (x4**2) + (x5**4)
 
         self.registrar_respuesta(respuesta, correcta)
+        print("------------- Sigamos avanzandos por el BOSQUE DE LOS NÚMEROS!!! ----------------")
+
+        numero_asientos = rd.randint(1,500)
+        print(f'''
+        Encuentro con los Animales: Un cine en el bosque tiene {numero_asientos} asientos. 
+        Si el 70% están ocupados, ¿cuántos asientos quedan libres? 
+        ''', end="")
+        respuesta = float(input(""))
+        correcta = (numero_asientos * 30) / 100
+        self.registrar_respuesta(respuesta=respuesta, correcta=correcta) #Registrando respuesta.
+
+        print("Ahora por último, para cruzar el BOSQUE DE LOS NÚMEROS debes analizar la siguiente afirmación")
+        print('''
+         Solo una de las siguientes afirmaciones es verdadera. ¿Cual es?
+        (a) “(b) es verdadera”
+        (b) “(e) es falsa”
+        (c) “las afirmaciones desde (a) hasta (e) son verdaderas”
+        (d) “las afirmaciones desde (a) hasta (e) son falsas”
+        (e) “(a) es falsa”
+        ''')
+        respuesta = input(": ").lower()
+
+        correcta = "e"
+
+        self.registrar_respuesta(respuesta=respuesta, correcta=correcta)
+
+        print(f"¡Felicidades {self.nombre}! Has recorrido con éxito el Bosque de los Números. \n El sendero ahora te lleva hacia un puente en el horizonte. ¡Continúa, aventurero, el desafío apenas comienza!")
+
+
 
     def nivel2(self):
-        print('''
-Un tren sale de una ciudad a las 2:00 PM y viaja a 80 km/h. ¿A qué hora llegará a su destino si está a 240 km de distancia?
-
-
+        print(f"Nivel 2: El Puente de las Ecuaciones. \n Bienvenido de nuevo {self.nombre}, esta vez frente a ti, un largo y antiguo puente se extiende sobre un cañón. \n Pero no está solo. Un guardián enigmático custodia el paso, exigiendo que aquellos que deseen \n cruzar resuelvan ecuaciones para demostrar su sabiduría.")
+        x = sp.symbols('x')
+        a = rd.randint(1,10)
+        b = rd.randint(1,10)
+        c = rd.randint(1,10)
+        equation = sp.Eq((a*x - 3)/2 + (b*x + 7)/3, c*x - 5)
+        solution = sp.solve(equation, x)
+        # Redondear la solución a 2 decimales
+        rounded_solution = [sp.N(sol, 2) for sol in solution]
+        print(f'''
+“El guardián del puente te mira con ojos penetrantes. Solo los que resuelven los misterios de las ecuaciones 
+              pueden cruzar, dice en voz profunda. Las cuerdas del puente vibran al compás
+               de los números que flotan en el aire. Para avanzar, deberás desentrañar cada
+               ecuación que el guardián te plantee.” (Responde con solo dos decimales)
+            Resolver: ({a}*x - 3)/2 + ({b}*x + 7)/3, {c}*x - 5) = 0
 ''')
+        respuesta = float(input(""))
+
+        self.registrar_respuesta(respuesta, rounded_solution)
 
     def nivel3(self):
         pass
@@ -98,6 +141,8 @@ if __name__ == '__main__':
 
     alumno1 = Secundaria("Eduardo", "secundaria")
 
-    alumno1.nivel1()
-    #print(alumno1.puntuacion)
+    #alumno1.nivel1()
+    alumno1.nivel2()
+    print(alumno1.puntuacion)
 
+#"Has atravesado el Bosque de los Números y ahora puedes continuar tu aventura."
