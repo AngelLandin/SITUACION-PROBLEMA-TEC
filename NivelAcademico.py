@@ -12,6 +12,16 @@ class NivelAcademico():
         else:
             print(f"\U0001F625 INCORRECTO!!! \U0001F625, la respuesta correcta es: {correcta}")
 
+    def registrar_respuesta_doble(self, respuesta1, respuesta2, correcta1, correcta2):
+        if (respuesta1 == correcta1) or (respuesta1 == correcta2):
+            print("\u2705 Excelente, respuesta CORRECTA!!! \u2705")
+            self.puntuacion += .5
+        if (respuesta2 == correcta1) or (respuesta2 == correcta2):
+            print("\u2705 Excelente, respuesta CORRECTA!!! \u2705")
+            self.puntuacion += .5
+        else:
+            print(f"\U0001F625 INCORRECTO!!! \U0001F625, la respuesta correcta es: {correcta1} y {correcta2}")
+
     def mostrar_puntuacion(self):
         print(f'Tu puntuacion actual es de: {self.puntuacion}')
 

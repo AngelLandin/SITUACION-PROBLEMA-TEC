@@ -1,6 +1,7 @@
 import sympy as sp #Libreria para el uso de algebra
 import random as rd #Libreria para la generación de numeros aleatorios
 from NivelAcademico import NivelAcademico
+import math
 class Secundaria(NivelAcademico): #MODULO SECUNDARIA
     '''
     Class Secundaria: Clase exclusiva para alumnos del nivel secundaria, la cual contendra
@@ -117,8 +118,25 @@ Avancemos... \u26D4 Ahora nos adentraremos al BOSQUE DE LOS NÚMEROS!!! \u26D4
             Resolver: ({a}*x - 3)/2 + ({b}*x + 7)/3, {c}*x - 5) = 0
 ''')
         respuesta = float(input(""))
-
         self.registrar_respuesta(respuesta, rounded_solution)
+
+        print(f'''Excelente, prosigramos {self.nombre}, 
+              Para demostrar tu valía, deberás resolver la siguiente ecuación que ha protegido este puente por siglos. 
+              Si logras encontrar las soluciones, el camino hacia el templo se abrirá para ti.''')
+        a = rd.randint(1,20)
+        b = rd.randint(1,20)
+        c = rd.randint(1,20)
+        discriminante = ((b**2)-4*a*c)
+        formula = (-1*b+(math.sqrt(discriminante))) / 2*a
+        formula2 = (-1*b-(math.sqrt(discriminante))) / 2*a
+        print(f'''
+
+{a}x^2 + {b}x + {c} = 0
+
+''')
+        respuesta1 = float(input("Cuanto vale X1: "))
+        respuesta2 = float(input("Cuanto vale X2: "))
+        self.registrar_respuesta_doble(respuesta1=formula, respuesta2=formula2, correcta1=respuesta1, formula=respuesta2)
 
     def nivel3(self):
         pass
@@ -138,6 +156,7 @@ if __name__ == '__main__':
           debes superar una serie de desafíos matemáticos que te pondrán a prueba. 
           Cada nivel te acercará más a tu destino, y solo los más astutos lograrán desvelar el misterio.
 """)
+
 
     alumno1 = Secundaria("Eduardo", "secundaria")
 
