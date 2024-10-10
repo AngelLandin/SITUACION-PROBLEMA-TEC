@@ -1,0 +1,12 @@
+Valiente aventurero, la Montaña de la Geometría es el siguiente gran reto en tu camino hacia el templo. 
+Cada paso que des en esta montaña requerirá de tu ingenio para comprender las formas que te rodean. 
+Triángulos, círculos y polígonos te desafiarán a medida que asciendas. Solo quienes desvelan los 
+secretos geométricos lograrán llegar a la cima.
+Mientras avanzas, te enfrentas a una serie de figuras que cambian constantemente ante tus ojos. 
+El camino parece retorcerse entre las formas geométricas, pero pronto te encuentras con un nuevo reto.
+
+A medida que avanzas por la montaña, te detienes frente a una figura brillante: un triángulo equilátero 
+gigante tallado en la piedra. Una voz profunda resuena en el aire:
+“Aventurero, para continuar tu ascenso, debes descifrar los secretos de este triángulo. 
+Si puedes calcular sus propiedades, el camino se abrirá para ti.”
+

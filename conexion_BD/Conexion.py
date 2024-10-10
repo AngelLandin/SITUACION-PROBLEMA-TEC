@@ -1,39 +1,29 @@
+from conexion import Conexion
 from logger_base import log
-import sys
-from psycopg2 import pool #Importamos el pool de conexiones.
 
-class Conexion:
-    _DATABASE = 'test_db' #Cambiar el nombre de la base de datos.
-    _PASSWORD = 'admin'
-    _USERNAME = 'postgres'
-    _BD_PORT = '5432'
-    _HOST = '127.0.0.1'
-    _MIN_CON = 1
-    _MAX_CON = 10
-    _pool = None
+class CursorDelPool:
+    def __init__(self):
+        self._conexion = None
+        self._cursor = None
 
-    @classmethod
-    def obtenerPool(cls):
-        if cls._pool is None:
-            try:
-                cls._pool = pool.SimpleConnectionPool(cls._MIN_CON, cls._MAX_CON,
-                                                      host = cls._HOST,
-                                                      user = cls._USERNAME,
-                                                      password = cls._PASSWORD,
-                                                      port = cls._BD_PORT,
-                                                      database = cls._DATABASE)
-                log.debug(f'Creación del pool exitosa: {cls._pool}')
-                return cls._pool
-            except Exception as e:
-                log.error(f'Ocurrió un error')
-                sys.exit()
+    def __enter__(self):
+        log.debug('inicio del método with __enter__')
+        self._conexion = Conexion.obtenerConexion()
+        self._cursor = self._conexion.cursor()
+        return self._cursor
+
+    def __exit__(self, tipo_excepcion, value_excepcion, detalle_excepcion):
+        if value_excepcion:
+            self._conexion.rollback()
+            log.error(f'Ocurrio una excepcion, se hizo rollback: {tipo_excepcion} {value_excepcion} {detalle_excepcion}')
         else:
-            return cls._pool
-
-    @classmethod
-    def obtenerConexion(cls):
-        pass
-
+            self._conexion.commit()
+            log.debug('Se hizo commit')
+        self._cursor.close()
+        Conexion.liberarConexion(self._conexion)
 
 if __name__ == '__main__':
-    pass
+    with CursorDelPool() as cursor:
+        log.debug('Dentro del bloque with')
+        cursor.execute('SELECT * FROM persona')
+        log.debug(cursor.fetchall())

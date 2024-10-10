@@ -1,0 +1,9 @@
+Luis escondió un objeto en su sombrero mágico, le dijo a Manuel que si adivinaba el color y la forma
+le regalaba un dulce. Para hacerlo más justo, Luis le dio las siguientes pistas:
+    ■ Si es azul, entonces es redondo.
+    ■ Si es cuadrado, entonces es rojo.
+    ■ Es azul o amarillo.
+    ■ Si es amarillo, entonces es cuadrado
+    ■ Es cuadrado o redondo.
+    ¿Cómo es el objeto?
+    

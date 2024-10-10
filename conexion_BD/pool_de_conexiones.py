@@ -12,6 +12,7 @@ class Conexion:
     _MAX_CON = 5
     _pool = None
 
+
     @classmethod
     def obtenerPool(cls):
         if cls._pool == None or cls._pool.closed:
@@ -48,8 +49,6 @@ class Conexion:
 if __name__ == '__main__':
     conexion1 = Conexion.obtenerConexion()
     Conexion.liberarConexion(conexion1)
-    conexion2 = Conexion.obtenerConexion()
-    conexion3 = Conexion.obtenerConexion()
     conexion4 = Conexion.obtenerConexion()
     Conexion.liberarConexion(conexion4)
     conexion5 = Conexion.obtenerConexion()

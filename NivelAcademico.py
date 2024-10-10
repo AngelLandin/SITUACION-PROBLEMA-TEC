@@ -22,9 +22,20 @@ class NivelAcademico():
         else:
             print(f"\U0001F625 INCORRECTO!!! \U0001F625, la respuesta correcta es: {correcta1} y {correcta2}")
 
-    def mostrar_puntuacion(self):
-        print(f'Tu puntuacion actual es de: {self.puntuacion}')
-
+    
+    def registrar_doble_respuesta(self, correcta1, correcta2, respuesta1, respuesta2):
+            if (respuesta1 == correcta1) and (respuesta2 == correcta2):
+                print(f'Tu puntuacion actual es de: {self.puntuacion}')
+                print("\u2705 Excelente, respuesta CORRECTA!!! \u2705")
+                self.puntuacion += 1
+            else:
+                print(f"\U0001F625 INCORRECTO!!! \U0001F625, la respuesta correcta es: {self.correcta1} y {self.correcta2}")
+    
+    
+    def leer_archivo(self, archivo):
+        with open(archivo, 'r', encoding='UTF-8') as archivo_leer:
+            print(archivo_leer.read())
+        
     @property
     def nombre(self):
         return self._nombre
