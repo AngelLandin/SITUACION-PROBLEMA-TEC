@@ -7,9 +7,9 @@ class Conexion:
     _USERNAME = 'postgres' 
     _PASSWORD = 'admin'
     _BD_PORT = '5432'
-    _DATABASE = 'Reto_Programacion' #Cambiar base de datos xdxdxdxd
+    _DATABASE = 'Reto_Programacion' #Nombre de nuestra base de datos
     _MIN_CON = 1
-    _MAX_CON = 5
+    _MAX_CON = 10
     _pool = None
 
 

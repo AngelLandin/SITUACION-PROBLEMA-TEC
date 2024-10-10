@@ -1,0 +1,7 @@
+Ahora por último, para cruzar el BOSQUE DE LOS NÚMEROS debes analizar la siguiente afirmación
+Solo una de las siguientes afirmaciones es verdadera. ¿Cual es?
+    (a) “(b) es verdadera”
+    (b) “(e) es falsa”
+    (c) “las afirmaciones desde (a) hasta (e) son verdaderas”
+    (d) “las afirmaciones desde (a) hasta (e) son falsas”
+    (e) “(a) es falsa”

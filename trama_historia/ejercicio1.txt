@@ -5,5 +5,4 @@ le regalaba un dulce. Para hacerlo más justo, Luis le dio las siguientes pistas
     ■ Es azul o amarillo.
     ■ Si es amarillo, entonces es cuadrado
     ■ Es cuadrado o redondo.
-    ¿Cómo es el objeto?
-    
+    ¿Cómo es el objeto? Nota: Primero pon la forma y luego el color

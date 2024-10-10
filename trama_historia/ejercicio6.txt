@@ -1,0 +1,4 @@
+Te enfrentas a un último acertijo antes de llegar a la montaña. Un número está parcialmente oculto:
+
+El numero 202■2 es un multiplo de 9 y se le ha tapado un dígito. 
+¿Que numero va en el lugar vacío?
