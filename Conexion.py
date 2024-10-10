@@ -4,6 +4,8 @@ from logger_base import log
 import numpy as np
 
 class CursorDelPool:
+    _INSERT = 'INSERT INTO secundaria(nombre, grado, puntuacion) VALUES(%s, %s, %s)'
+
     def __init__(self):
         self._conexion = None
         self._cursor = None
@@ -23,11 +25,25 @@ class CursorDelPool:
         self._cursor.close()
         Conexion.liberarConexion(self._conexion)
 
+'''def insertar(Secundaria):
+    with CursorDelPool() as cursor:
+            valores = (Secundaria.nombre, Secundaria.grado, Secundaria.puntuacion)
+            cursor.execute(CursorDelPool._INSERTAR, valores)
+            log.debug(f'Persona insertada: {valores}')
+            return cursor.rowcount'''
+
 if __name__ == '__main__':
     with CursorDelPool() as cursor:
         # Ejecuta la consulta SQL para obtener los datos
         cursor.execute('SELECT grado, puntuacion FROM secundaria')
         registros = cursor.fetchall()
+
+        cursor.execute(CursorDelPool._INSERT)
+        cursor
+
+
+    
+
         
         # Extraer los grados y puntuaciones en listas separadas
         grados = [registro[0] for registro in registros]

@@ -11,6 +11,9 @@ class Secundaria(NivelAcademico):
     '''
     cantidad_alumnos = []  # Lista para almacenar a los alumnos
     contador_alumnos = 0  # Contador de alumnos registrados
+    historia = ""
+    with open('trama_historia\\mensaje_bienvenida.txt', 'r', encoding='UTF-8') as archivo_bienvenida:
+        historia = archivo_bienvenida.read()
 
     # Constructor de la clase
     def __init__(self, nombre, grado, puntuacion):
@@ -21,6 +24,10 @@ class Secundaria(NivelAcademico):
         self._nombre = nombre 
         self._grado = grado
         self._puntuacion = puntuacion
+        Secundaria.cantidad_alumnos += 1
+        print(self.historia)
+
+        
 
         # Preguntar si el usuario quiere iniciar el juego
         self.iniciar_juego()
@@ -97,10 +104,10 @@ class Secundaria(NivelAcademico):
             elif seleccion == "4":
                 self.desafio_final()
             elif seleccion == "5":
-                print("Saliendo del juego. ¡Hasta pronto!")
+                print("😁 Saliendo del juego. ¡Hasta pronto!... 😁")
                 break
             else:
-                print("Opción inválida. Inténtalo de nuevo.")
+                print("🤷Opción inválida. Inténtalo de nuevo.🤷")
 
     # Primer nivel: acertijos matemáticos en el "Bosque de los Números"
     def nivel1(self):
@@ -270,6 +277,7 @@ Avancemos... \u26D4 Ahora nos adentraremos al BOSQUE DE LOS NÚMEROS!!! \u26D4
         juego_final.Blastar()  # Iniciar minijuego Blastar
         with open('trama_historia\\mensaje_final.txt', 'r', encoding='UTF-8') as archivo_leer:
             print(archivo_leer.read())  # Mostrar mensaje final del juego
+            print(f'Tu puntuación fue de {self.contador}/10')
 
     # Método para calcular el volumen de un octaedro regular
     def calcular_volumen_octaedro(self, lado):
@@ -285,6 +293,7 @@ Avancemos... \u26D4 Ahora nos adentraremos al BOSQUE DE LOS NÚMEROS!!! \u26D4
 
 
 if __name__ == '__main__':
+
     # Muestra el mensaje de bienvenida leyendo un archivo de texto
     with open('trama_historia\\mensaje_bienvenida.txt', 'r', encoding='UTF-8') as archivo_bienvenida:
         print(archivo_bienvenida.read())

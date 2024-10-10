@@ -475,5 +475,3 @@ def main_primaria():
             break
         else:
             print("Elige una opción válida(1 o 2)") #valida que sea una opción que este incluida en el menu
-            
-main_primaria() #llamar a la función que hace que el código entero funcione

@@ -1,68 +1,54 @@
-#Menú Principal
+# Menú Principal
 from secundaria import Secundaria
 from pool_de_conexiones import Conexion
-from Conexion import Conexion
-from Conexion import CursorDelPool
+from Conexion import *
 import matplotlib.pyplot as plt
-from pool_de_conexiones import Conexion
 from logger_base import log
 import numpy as np
 from Nivel_Primaria_opriginal import *
 
 
-def menu(): #Visualizar el menu principal
-    print("###################################")
-    print("         MENU PRINCIPAL           ")
-    print("###################################")
-    print("  1. Primaria      ")
-    print("  2. Secundaria    ")
-    print("  3. Graficar       ")
-    print("  4. Salir         ")  
 
+def menu_principal():  # Visualizar el menú principal
+    while True:
+        print("###################################")
+        print("         MENU PRINCIPAL           ")
+        print("###################################")
+        print("  1. Primaria      ")
+        print("  2. Secundaria    ")
+        print("  3. Graficar      ")
+        print("  4. Salir         ")
 
-def menu_principal():
-    #menu donde se define el rumbo del usuario
-    #en esta funcón se ejecuta la sección del juego que el usuario decida, hasta que elija la opción de terminar el juego.
-    
-    print("~~~~~~~BIENVENIDO AL JUEGO ~~~~~~~")
-    print("Estas listo para aprender? \nA continuación te presentamos 4 diferentes opciones: \nEn la opción 1 y 2, elegiras el grado académico " )
-    print( "La tienda es un apartado de premios!, aprende y disfuta del juego.....")
-    
-    while True: #ciclo que se mostrará al usuario siempre y cuando continue jugando.
-        menu()
-        opcion = input("Selecciona una opción (1-4): ") #variable de entrada principal que define el juego
-        
-        if opcion == '1': #Clase de primaria
-            print("¡Nuevo juego iniciado!")
-            print("Cargando partida...")
-            print("°°°°°°°°°°°°°°°°°°°°")
+        # Solicitar opción al usuario
+        opc = int(input("Selecciona una opción (1-4): "))
+
+        if opc == 1:  # Iniciar el juego de primaria
+            print("¡Nuevo juego de primaria iniciado!")
             main_primaria()
-        elif opcion == '2': #Clase de secundaria
-            print("¡Nuevo juego iniciado!")
-            print("Cargando partida...")
-            print("°°°°°°°°°°°°°°°°°°°°")
+
+        elif opc == 2:  # Iniciar el juego de secundaria
+            print("¡Nuevo juego de secundaria iniciado!")
             nombre = input("Ingresa tu nombre: ")
-            grado = int(input("Ingresa tu grado (numerico): ")) 
+            grado = int(input("Ingresa tu grado (numérico): "))
             puntuacion = 0
             alumno = Secundaria(nombre=nombre, grado=grado, puntuacion=puntuacion)
-            graficar_datos()
-    
 
-        elif opcion == '3': #Tienda 
-            print("¡Nuevo juego iniciado!")
-            print("Cargando partida...")
-            print("°°°°°°°°°°°°°°°°°°°°")
-            #graficar_datos()
-        elif opcion == '4':#Terminar con el juego
-            print("La aventura ha terminado....\n Gracias por jugar. ¡Hasta luego!")
+        elif opc == 3:  # Graficar los datos
+            print("Generando gráfica de puntuaciones por grado...")
+            graficar_datos()
+
+        elif opc == 4:  # Salir del programa
+            print("Saliendo del programa... ¡Hasta pronto!")
             break
+
         else:
             print("Opción no válida. Inténtalo de nuevo.")
 
 
-menu_principal()
-
 def graficar_datos():
+    '''
+    Función para graficar los datos de los grados y puntuaciones de los alumnos en la base de datos.
+    '''
     with CursorDelPool() as cursor:
         # Ejecuta la consulta SQL para obtener los datos
         cursor.execute('SELECT grado, puntuacion FROM secundaria')
@@ -96,3 +82,6 @@ def graficar_datos():
         # Mostrar la gráfica
         plt.tight_layout()
         plt.show()
+
+# Llamada al menú principal para ejecutar el programa
+menu_principal()
